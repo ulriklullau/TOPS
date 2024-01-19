@@ -1,6 +1,8 @@
 # TOPS (**T**iny **O**pen **P**ower System **S**imulator)
-**Note**: This repository was previously called DynPSSimPy.
 
+For use in the course TET4180 at NTNU. Huge thanks to hallvard-h for providing us with this lightweight simluation tool.
+
+From hallvard-h's readme:
 
 This is a package for performing dynamic power system simulations in Python. The aim is to provide a simple and lightweight tool which is easy to install, run and modify, to be used by researchers and in education. Performance is not the main priority. The only dependencies are numpy, scipy, pandas and matplotlib (the core functionality only uses numpy and scipy).
 
