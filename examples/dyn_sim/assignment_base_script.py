@@ -13,7 +13,7 @@ importlib.reload(dps)
 if __name__ == '__main__':
 
     # Load model
-    import src.tops.ps_models.test_system as model_data
+    import tops.ps_models.assignment_model as model_data
     model = model_data.load()
 
     # Power system model
