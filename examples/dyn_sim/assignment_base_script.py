@@ -11,7 +11,7 @@ importlib.reload(dps)
 if __name__ == '__main__':
 
     # region Model loading and initialisation stage
-    import tops.ps_models.assignment3_model as model_data
+    import tops.ps_models.assignment_model as model_data
     model = model_data.load()
     ps = dps.PowerSystemModel(model=model)  # Load into a PowerSystemModel object
 
