@@ -11,7 +11,7 @@ importlib.reload(dps)
 if __name__ == '__main__':
 
     # region Model loading and initialisation stage
-    import tops.ps_models.assignment_model as model_data
+    import assignment_model_ulrik as model_data
     model = model_data.load()
     ps = dps.PowerSystemModel(model=model)  # Load into a PowerSystemModel object
 
@@ -60,7 +60,6 @@ if __name__ == '__main__':
     # endregion
 
     # Simulation loop starts here!
-    #Increment time and integrat all diff equations
     while t < t_end:
         result = sol.step()
         x = sol.y
@@ -68,8 +67,7 @@ if __name__ == '__main__':
         t = sol.t
 
         # Short circuit
-        # Increase the Ybus, the shunt element of that particular bus you want to do the short ciruit at
-        if t >= 1 and t <= 1.05:
+        if t >= 1 and t <= 1.3: #1.05
             ps.y_bus_red_mod[(sc_bus_idx,) * 2] = 1e6
         else:
             ps.y_bus_red_mod[(sc_bus_idx,) * 2] = 0
@@ -78,9 +76,9 @@ if __name__ == '__main__':
         result_dict['Global', 't'].append(sol.t)
         [result_dict[tuple(desc)].append(state) for desc, state in zip(ps.state_desc, x)]
         # Store additional variables
-        P_m_stored.append(ps.gen['GEN'].P_m(x, v).copy()) 
+        P_m_stored.append(ps.gen['GEN'].P_m(x, v).copy())
         P_e_stored.append(ps.gen['GEN'].P_e(x, v).copy())
-        E_f_stored.append(ps.gen['GEN'].E_f(x, v).copy()) #Go to generator code (dynamic model -> gen) to  change what is plotted
+        E_f_stored.append(ps.gen['GEN'].E_f(x, v).copy())
 
         I_gen = ps.y_bus_red_full[0, 1] * (v[0] - v[1])
         I_stored.append(np.abs(I_gen))
