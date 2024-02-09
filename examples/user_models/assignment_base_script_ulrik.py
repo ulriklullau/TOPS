@@ -67,7 +67,7 @@ if __name__ == '__main__':
         t = sol.t
 
         # Short circuit
-        if t >= 1 and t <= 1.3: #1.05
+        if t >= 1 and t <= 1.05: #1.05
             ps.y_bus_red_mod[(sc_bus_idx,) * 2] = 1e6
         else:
             ps.y_bus_red_mod[(sc_bus_idx,) * 2] = 0
